@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Night City Chat Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Barlow+Semi+Condensed:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+/* ---------- Tokens ---------- */
+:root {
+  --red: #ff5f56;
+  --red-dim: #7c2626;
+  --cyan: #5ef6ff;
+  --yellow: #fcee0a;
+  --cut: 12px;
+
+  --font-ui: 'Rajdhani', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-code: 'Share Tech Mono', monospace;
+}
+
+/* Phone: holo-phone messenger (teal NPC, green V) */
+[data-preset="phone"] {
+  --bg: #07090d;
+  --glow: rgba(150, 36, 36, .30);
+  --panel: #0a0e12;
+  --line: #2a3a3e;
+  --label: var(--red);
+  --heading: #8ee8ee;
+  --npc-fill: #10181c;
+  --npc-border: #4d6f72;
+  --npc-text: #d3dfdd;
+  --npc-text-calm: #c9d3d2;
+  --npc-accent: #8ee8ee;
+  --v-fill: #0b261d;
+  --v-border: #36c98a;
+  --v-text: #7af0b4;
+  --row-fill: #0c1216;
+  --row-border: #22333a;
+  --row-text: #9fc6c6;
+  --row-active-fill: #12302c;
+  --row-active-border: #36c98a;
+  --row-active-text: #7af0b4;
+  --marker: #4d6f72;
+}
+
+/* Journal: menu screen (yellow NPC, cyan V, red rows) */
+[data-preset="journal"] {
+  --bg: #080b12;
+  --glow: rgba(190, 40, 40, .34);
+  --panel: #0b0a10;
+  --line: #3a1a1e;
+  --label: var(--red);
+  --heading: var(--red);
+  --npc-fill: #14110b;
+  --npc-border: #d8b62c;
+  --npc-text: #f2d544;
+  --npc-text-calm: #e8dcb0;
+  --npc-accent: var(--yellow);
+  --v-fill: #0b2125;
+  --v-border: var(--cyan);
+  --v-text: #7ff8ff;
+  --row-fill: #150c10;
+  --row-border: #3a1a1e;
+  --row-text: #5ef6ff;
+  --row-active-fill: #7c2626;
+  --row-active-border: #ff5f56;
+  --row-active-text: #5ef6ff;
+  --marker: #7c2626;
+}
+
+/* Johnny: his phone (lime-yellow text, olive frames, blue highlights) */
+[data-preset="johnny"] {
+  --red: #d9e35f;
+  --red-dim: #4a4f1f;
+  --cyan: #6f8cff;
+  --bg: #0a0b06;
+  --glow: rgba(150, 160, 40, .20);
+  --panel: #0f1108;
+  --line: #2e3216;
+  --label: #d9e35f;
+  --heading: #7f96ff;
+  --npc-fill: #11130a;
+  --npc-border: #a9b244;
+  --npc-text: #e2ea74;
+  --npc-text-calm: #dde2b4;
+  --npc-accent: #eef47a;
+  --v-fill: #0f1429;
+  --v-border: #5b7cf0;
+  --v-text: #aab9ff;
+  --row-fill: #0f1108;
+  --row-border: #2e3216;
+  --row-text: #e2ea6a;
+  --row-active-fill: #5b7cf0;
+  --row-active-border: #5b7cf0;
+  --row-active-text: #0d1028;
+  --marker: #4a4f1f;
+  --send-fill: #0c1230;
+}
+/* Chromatic split on headings, like Johnny's relic flicker */
+[data-preset="johnny"] :is(.brand b, .crumb .title, .npc h3, .section-label) {
+  text-shadow: -1px 0 rgba(111, 140, 255, .6), 1px 0 rgba(217, 227, 95, .5);
+}
+[data-preset="johnny"] .micro { text-shadow: none; }
+[data-preset="johnny"] .crumb .title { color: #eef47a; }
+[data-preset="johnny"][data-noise="on"] .crumb .title { animation: relic 7s steps(1) infinite; }
+@keyframes relic {
+  0%, 100% { transform: none; clip-path: none; }
+  94% { transform: translateX(-3px); clip-path: inset(0 0 55% 0); }
+  95% { transform: translateX(2px); clip-path: inset(40% 0 0 0); }
+  96% { transform: none; clip-path: none; }
+}
+@media (prefers-reduced-motion: reduce) { .crumb .title { animation: none !important; } }
+
+[data-body="calm"] {
+  --font-body: 'Barlow Semi Condensed', sans-serif;
+  --npc-text: var(--npc-text-calm);
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--npc-text);
+  font-family: var(--font-ui);
+  font-weight: 500;
+  overflow: hidden;
+}
+body {
+  background:
+    radial-gradient(ellipse 80% 45% at 50% -5%, var(--glow), transparent 70%),
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--red) 7%, transparent) 1px, transparent 1.5px) 0 0 / 22px 22px,
+    var(--bg);
+}
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,.025) 0 1px, transparent 1px 3px);
+  z-index: 50;
+}
+body[data-noise="off"] .micro { display: none; }
+
+/* ---------- Chamfered frames ----------
+   clip-path would cut the border off, so the border is a clipped
+   ::before layer and the fill is a clipped ::after layer 1px inside. */
+.frame { position: relative; isolation: isolate; }
+.frame::before, .frame::after {
+  content: ""; position: absolute; z-index: -1; --k: var(--cut);
+}
+.frame::before { inset: 0; background: var(--fb); }
+.frame::after { inset: 1px; background: var(--ff); --k: calc(var(--cut) - .41px); }
+.cut-br::before, .cut-br::after {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--k)), calc(100% - var(--k)) 100%, 0 100%);
+}
+.cut-bl::before, .cut-bl::after {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, var(--k) 100%, 0 calc(100% - var(--k)));
+}
+.cut-tl-br::before, .cut-tl-br::after {
+  clip-path: polygon(var(--k) 0, 100% 0, 100% calc(100% - var(--k)), calc(100% - var(--k)) 100%, 0 100%, 0 var(--k));
+}
+
+.micro {
+  font-family: var(--font-code);
+  font-size: 9px;
+  letter-spacing: .04em;
+  color: var(--label);
+  opacity: .55;
+  text-transform: uppercase;
+}
+
+/* ---------- Layout ---------- */
+.app { display: grid; grid-template-columns: 290px 1fr; height: 100vh; }
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  display: flex; flex-direction: column;
+  padding: 20px 16px 16px 18px;
+  border-right: 1px solid var(--line);
+  background: linear-gradient(to right, rgba(0,0,0,.35), transparent);
+  min-height: 0;
+}
+.brand { display: flex; align-items: baseline; gap: 10px; margin-bottom: 18px; }
+.brand b {
+  font-weight: 700; font-size: 22px; letter-spacing: .08em; color: var(--label);
+}
+.brand b { text-shadow: 0 0 12px color-mix(in srgb, var(--red) 45%, transparent); }
+
+.new-chat {
+  --fb: var(--v-border); --ff: var(--v-fill); --cut: 9px;
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; padding: 10px 14px;
+  border: 0; background: none; cursor: pointer;
+  font: 700 16px var(--font-ui); letter-spacing: .08em; color: var(--v-text);
+  text-transform: uppercase;
+}
+.new-chat .plus {
+  display: grid; place-items: center; width: 20px; height: 20px;
+  border: 1px solid currentColor; font-size: 16px; line-height: 1;
+}
+
+.nav { list-style: none; margin: 14px 0 0; padding: 0; }
+.nav li {
+  padding: 6px 4px; font-size: 15px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--row-text); opacity: .8; cursor: pointer;
+}
+.nav li:hover { opacity: 1; }
+
+.section-label {
+  display: flex; align-items: center; gap: 8px;
+  margin: 22px 0 10px;
+  font-weight: 700; font-size: 17px; letter-spacing: .06em; color: var(--label);
+}
+.section-label { text-shadow: 0 0 10px color-mix(in srgb, var(--red) 35%, transparent); }
+
+.convos { list-style: none; margin: 0; padding: 0 4px 0 0; overflow-y: auto; flex: 1; min-height: 0; }
+.convo { display: grid; grid-template-columns: 12px 1fr; gap: 8px; margin-bottom: 6px; cursor: pointer; }
+.convo .marker {
+  background: repeating-linear-gradient(135deg, var(--marker) 0 2px, transparent 2px 5px);
+  border: 1px solid var(--marker);
+  opacity: .8;
+}
+.convo .row {
+  --fb: var(--row-border); --ff: var(--row-fill); --cut: 8px;
+  padding: 8px 12px;
+  font-weight: 600; font-size: 15px; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--row-text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.convo:hover .row { --fb: var(--npc-border); }
+.convo.active .row { --fb: var(--row-active-border); --ff: var(--row-active-fill); color: var(--row-active-text); }
+.convo.active .marker { --marker: var(--red); opacity: 1; }
+
+.account {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line);
+  font-size: 15px; font-weight: 600; letter-spacing: .05em; color: var(--row-text);
+}
+.avatar {
+  display: grid; place-items: center; width: 30px; height: 30px;
+  border: 1px solid var(--cyan); color: var(--cyan); font-weight: 700;
+}
+.account .plan { margin-left: auto; }
+
+/* ---------- Main ---------- */
+main { display: flex; flex-direction: column; min-width: 0; min-height: 0; position: relative; }
+
+.topbar {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  padding: 18px 32px 0;
+  position: relative;
+}
+.topbar::after {
+  content: ""; position: absolute; left: 32px; right: 32px; bottom: 0; height: 1px;
+  background: linear-gradient(to right, var(--red), color-mix(in srgb, var(--red) 25%, transparent) 70%, transparent);
+}
+.crumb {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 19px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+  padding-bottom: 8px; position: relative;
+}
+.crumb .from { color: var(--heading); }
+.crumb .sep { color: var(--heading); opacity: .7; }
+.crumb .title { color: #e8eeee; }
+[data-preset="journal"] .crumb .title { color: var(--cyan); }
+.crumb::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px;
+  background: linear-gradient(to right, var(--heading) 0 38%, transparent 38% 40%, var(--heading) 40%);
+  z-index: 1;
+}
+.phone-icon { width: 18px; height: 18px; color: var(--heading); }
+.model {
+  padding-bottom: 10px;
+  font-size: 15px; font-weight: 600; letter-spacing: .08em; color: var(--label);
+  display: flex; align-items: center; gap: 12px; cursor: pointer;
+}
+.model .tri { color: var(--cyan); font-size: 12px; }
+
+/* In-page switcher, styled like the game's menu tab bar */
+.top-right { display: flex; align-items: flex-end; gap: 28px; }
+.modes { display: flex; gap: 18px; padding-bottom: 8px; }
+.modes button {
+  display: flex; align-items: center; gap: 7px;
+  padding: 0 0 3px; border: 0; border-bottom: 2px solid transparent;
+  background: none; cursor: pointer;
+  font: 600 14px var(--font-ui); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--label); opacity: .7;
+}
+.modes button::before {
+  content: ""; width: 7px; height: 7px; border: 1px solid currentColor; transform: rotate(45deg);
+}
+.modes button:hover { opacity: 1; }
+.modes button[aria-pressed="true"] { opacity: 1; color: var(--cyan); border-bottom-color: var(--cyan); }
+.modes button[aria-pressed="true"]::before { background: currentColor; }
+.modes .sep { width: 1px; background: var(--line); }
+.modes .focus::before { display: none; }
+.modes .focus .key {
+  border: 1px solid currentColor; padding: 0 4px; font-size: 10px; line-height: 14px;
+}
+
+.thread {
+  flex: 1; overflow-y: auto; min-height: 0;
+  padding: 28px 32px 20px;
+  scrollbar-width: thin; scrollbar-color: var(--red) transparent;
+}
+.thread::-webkit-scrollbar, .convos::-webkit-scrollbar { width: 3px; }
+.thread::-webkit-scrollbar-thumb, .convos::-webkit-scrollbar-thumb { background: var(--red); }
+.convos { scrollbar-width: thin; scrollbar-color: var(--red-dim) transparent; }
+.inner { max-width: 780px; margin: 0 auto; }
+
+/* ---------- Messages ---------- */
+.msg { margin-bottom: 18px; font-family: var(--font-body); font-size: 17px; line-height: 1.5; }
+.msg p { margin: 0 0 .7em; }
+.msg p:last-child { margin-bottom: 0; }
+.msg-meta { display: flex; justify-content: space-between; margin-bottom: 4px; }
+
+.npc .bubble {
+  --fb: var(--npc-border); --ff: var(--npc-fill);
+  padding: 16px 20px 18px; color: var(--npc-text);
+}
+.v { display: flex; flex-direction: column; align-items: flex-end; }
+.v .bubble {
+  --fb: var(--v-border); --ff: var(--v-fill);
+  max-width: 78%; padding: 12px 18px; color: var(--v-text);
+}
+[data-body="game"] .msg { font-weight: 500; }
+.v .bubble { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--v-border) 12%, transparent)); }
+[data-preset="journal"] .v .bubble { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--cyan) 14%, transparent)); }
+
+.npc h3 {
+  margin: 1em 0 .4em; font-family: var(--font-ui);
+  font-size: 18px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--npc-accent);
+}
+.npc h3:first-child { margin-top: 0; }
+.npc strong { color: var(--npc-accent); font-weight: 600; }
+.npc ul { margin: 0 0 .7em; padding-left: 0; list-style: none; }
+.npc li { position: relative; padding-left: 18px; margin-bottom: .25em; }
+.npc li::before {
+  content: ""; position: absolute; left: 2px; top: .62em; width: 6px; height: 6px;
+  background: var(--red); transform: rotate(45deg);
+}
+.msg code:not(pre code) {
+  font-family: var(--font-code); font-size: .88em;
+  padding: 1px 5px; border: 1px solid var(--line); color: var(--cyan);
+  background: rgba(0,0,0,.35);
+}
+
+/* Thinking row, styled like an expandable contact row */
+.thinking {
+  --fb: var(--row-border); --ff: var(--row-fill); --cut: 8px;
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-bottom: 8px; padding: 6px 14px;
+  font: 600 14px var(--font-ui); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--row-text); cursor: pointer;
+}
+.thinking .tri { color: var(--cyan); font-size: 11px; }
+
+/* Code block */
+.code {
+  --fb: var(--line); --ff: #06080c; --cut: 10px;
+  margin: .4em 0 .9em;
+}
+.code-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 6px 12px; border-bottom: 1px solid var(--line);
+  font: 600 13px var(--font-ui); letter-spacing: .1em; text-transform: uppercase; color: var(--label);
+}
+.code-head .copy { color: var(--cyan); cursor: pointer; }
+.code pre {
+  margin: 0; padding: 12px 14px; overflow-x: auto;
+  font: 14px/1.55 var(--font-code); color: #ec6458;
+}
+.tk-k { color: #ff5f56; } .tk-s { color: #fcee0a; } .tk-f { color: #5ef6ff; }
+.tk-n { color: #e05aa0; } .tk-c { color: #50949d; } .tk-t { color: #1db866; }
+
+/* Table */
+.npc table {
+  width: 100%; border-collapse: collapse; margin: .3em 0 .9em;
+  font-size: 15px;
+}
+.npc th {
+  text-align: left; padding: 6px 10px;
+  font-family: var(--font-ui); font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--label); border-bottom: 1px solid var(--red);
+}
+.npc td { padding: 6px 10px; border-bottom: 1px solid var(--line); }
+.npc td:first-child { font-family: var(--font-code); font-size: 13px; color: var(--cyan); }
+
+.msg-actions {
+  display: flex; gap: 16px; margin-top: 6px;
+  font: 600 13px var(--font-ui); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--row-text); opacity: .7;
+}
+.msg-actions span { cursor: pointer; }
+.msg-actions span:hover { opacity: 1; color: var(--cyan); }
+
+/* ---------- Composer ---------- */
+.composer-wrap { padding: 0 32px 16px; }
+.composer-wrap .inner { position: relative; }
+.composer-label {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding-top: 10px; margin-bottom: 6px;
+  border-top: 1px solid color-mix(in srgb, var(--red) 50%, transparent);
+}
+.composer-label .lbl { font-weight: 700; font-size: 18px; letter-spacing: .06em; color: var(--label); }
+.composer {
+  --fb: var(--v-border); --ff: var(--v-fill); --cut: 12px;
+  padding: 12px 14px 10px 16px;
+}
+.composer textarea {
+  width: 100%; min-height: 48px; resize: none;
+  background: none; border: 0; outline: none;
+  font: 500 17px/1.45 var(--font-body); color: var(--v-text);
+}
+.composer textarea::placeholder { color: var(--v-text); opacity: .45; }
+.composer-bar { display: flex; align-items: center; gap: 10px; }
+.icon-btn {
+  display: grid; place-items: center; width: 30px; height: 30px;
+  border: 1px solid var(--row-border); background: rgba(0,0,0,.3);
+  color: var(--row-text); font-size: 18px; cursor: pointer;
+}
+.pill {
+  padding: 4px 10px; border: 1px solid var(--row-border);
+  font: 600 13px var(--font-ui); letter-spacing: .08em; text-transform: uppercase; color: var(--row-text);
+}
+.send {
+  margin-left: auto; width: 38px; height: 38px;
+  display: grid; place-items: center; cursor: pointer;
+  border: 2px solid var(--cyan); background:
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--cyan) 18%, transparent) 0 2px, transparent 2px 5px), var(--send-fill, #04161a);
+  color: var(--cyan);
+}
+.send { box-shadow: 0 0 10px color-mix(in srgb, var(--cyan) 35%, transparent); }
+.send svg { width: 16px; height: 16px; }
+.disclaimer {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 8px; font-size: 13px; letter-spacing: .04em; color: var(--row-text); opacity: .6;
+}
+.esc { display: inline-flex; align-items: center; gap: 6px; color: var(--red); font-weight: 700; opacity: 1; }
+.esc .key { border: 1px solid var(--cyan); color: var(--cyan); font-size: 9px; padding: 1px 3px; }
+
+/* ---------- Background noise (generated by the script below) ---------- */
+.sidebar { position: relative; }
+main > :not(.noise), .sidebar > :not(.noise) { position: relative; z-index: 1; }
+.noise {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
+  font: 8px/1.3 var(--font-code); color: var(--red); letter-spacing: .05em;
+}
+.noise > * { position: absolute; opacity: var(--o, .26); white-space: pre; }
+.noise .alt { color: var(--cyan); --o: .16; }
+.noise svg { display: block; fill: currentColor; stroke: currentColor; }
+.noise .vtext { writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: .18em; }
+.noise .tag { border: 1px solid currentColor; padding: 2px 6px; display: flex; gap: 8px; }
+.noise .tag b { font: 700 10px var(--font-ui); letter-spacing: .1em; }
+.noise .flick { animation: flick 9s steps(1) infinite; }
+.noise .flick.slow { animation-duration: 13s; animation-delay: -4s; }
+@keyframes flick {
+  0%, 100% { opacity: .22; }
+  91% { opacity: .04; } 92% { opacity: .22; }
+  95% { opacity: .5; } 96% { opacity: .22; }
+}
+@media (prefers-reduced-motion: reduce) { .noise .flick { animation: none; } }
+body[data-noise="off"] .noise { display: none; }
+
+/* Rails: one tidy column per margin, modules stacked on a fixed rhythm */
+.noise .rail {
+  top: 84px; bottom: 28px; width: 140px; opacity: 1;
+  display: flex; flex-direction: column; gap: 26px;
+}
+.noise .rail.l { left: 26px; }
+.noise .rail.r { right: 26px; align-items: flex-end; text-align: right; }
+.noise .rail::before {
+  content: ""; position: absolute; top: -10px; width: 10px; height: 10px;
+  border-top: 1px solid var(--red); opacity: .35;
+}
+.noise .rail.l::before { left: -8px; border-left: 1px solid var(--red); }
+.noise .rail.r::before { right: -8px; border-right: 1px solid var(--red); }
+.noise .mod { width: 100%; opacity: var(--o, .26); }
+.noise .mod.end { margin-top: auto; }
+.noise .mod-head {
+  display: flex; justify-content: space-between; gap: 8px;
+  padding-bottom: 3px; margin-bottom: 5px;
+  border-bottom: 1px solid currentColor;
+}
+.noise .rail.r .mod-head { flex-direction: row-reverse; }
+.noise .mod-body { display: flex; gap: 10px; }
+.noise .rail.r .mod-body { justify-content: flex-end; }
+@media (max-width: 1439px) { main .noise { display: none; } }
+
+/* ---------- Mockup controls (not part of the theme) ---------- */
+.controls {
+  position: fixed; right: 16px; bottom: 16px; z-index: 60;
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 10px 12px; background: #000c; border: 1px solid #444;
+  font: 12px system-ui, sans-serif; color: #ccc;
+}
+.controls b { color: #fff; font-weight: 600; }
+.controls .grp { display: flex; gap: 4px; align-items: center; }
+.controls .grp span { width: 52px; }
+.controls button {
+  font: 12px system-ui, sans-serif; padding: 3px 8px; cursor: pointer;
+  background: #222; color: #ccc; border: 1px solid #555;
+}
+.controls button[aria-pressed="true"] { background: #fcee0a; color: #000; border-color: #fcee0a; }
+
+@media (max-width: 760px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+  .topbar, .thread, .composer-wrap { padding-left: 16px; padding-right: 16px; }
+  .topbar::after { left: 16px; right: 16px; }
+  .v .bubble { max-width: 92%; }
+}
+</style>
+</head>
+<body data-preset="phone" data-noise="on" data-body="calm">
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="noise" id="noise-side" aria-hidden="true"></div>
+    <div class="brand"><b>CLAUDE</b><span class="micro">neuro netprotocol 3888_m</span></div>
+    <button class="new-chat frame cut-br"><span class="plus">+</span>New chat</button>
+    <ul class="nav">
+      <li>Chats</li>
+      <li>Projects</li>
+      <li>Artifacts</li>
+    </ul>
+    <div class="section-label">RECENTS <span class="micro">sec.lvl 03 // 2077</span></div>
+    <ul class="convos">
+      <li class="convo active"><span class="marker"></span><span class="row frame cut-tl-br">Color hunt regex bug</span></li>
+      <li class="convo"><span class="marker"></span><span class="row frame cut-tl-br">Chrome extension manifest v3</span></li>
+      <li class="convo"><span class="marker"></span><span class="row frame cut-tl-br">Reddit launch post draft</span></li>
+      <li class="convo"><span class="marker"></span><span class="row frame cut-tl-br">Whisper on 6 cores</span></li>
+      <li class="convo"><span class="marker"></span><span class="row frame cut-tl-br">Share Tech Mono vs Rajdhani</span></li>
+      <li class="convo"><span class="marker"></span><span class="row frame cut-tl-br">Webflow CMS migration</span></li>
+      <li class="convo"><span class="marker"></span><span class="row frame cut-tl-br">Vault synthesis pass</span></li>
+    </ul>
+    <div class="account"><span class="avatar">W</span>Wojtek <span class="plan micro">pro plan</span></div>
+  </aside>
+
+  <main>
+    <div class="noise" id="noise-main" aria-hidden="true"></div>
+    <header class="topbar">
+      <div class="crumb">
+        <svg class="phone-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+        <span class="from">Chats</span><span class="sep">›</span><span class="title">Color hunt regex bug</span>
+      </div>
+      <div class="top-right">
+        <nav class="modes" aria-label="Theme">
+          <button data-k="preset" data-v="phone">Phone</button>
+          <button data-k="preset" data-v="journal">Journal</button>
+          <button data-k="preset" data-v="johnny">Johnny</button>
+          <span class="sep"></span>
+          <button class="focus" data-k="noise" data-v="off" data-toggle="on"><span class="key">F</span>Focus</button>
+        </nav>
+        <div class="model">OPUS 5.5 <span class="tri">▼</span></div>
+      </div>
+    </header>
+
+    <div class="thread">
+      <div class="inner">
+
+        <div class="msg v">
+          <div class="bubble frame cut-bl">
+            <p>my color_hunt script finds zero FF06B5 colors in 30k files. sus. can you check the regex?</p>
+          </div>
+        </div>
+
+        <div class="msg npc">
+          <div class="thinking frame cut-br"><span class="tri">▼</span>Thought for 12s</div>
+          <div class="bubble frame cut-br">
+            <h3>Found it</h3>
+            <p>Your regex expects the keys in <code>Red, Green, Blue</code> order, but WolvenKit 9.1 writes them <strong>alphabetically</strong>: Alpha, Blue, Green, Red. So the pattern never matches, and "zero hits" just means the scanner was blind.</p>
+            <p>Parse the JSON instead of matching text, so key order stops mattering:</p>
+            <div class="code frame cut-br">
+              <div class="code-head"><span>python</span><span class="copy">Copy</span></div>
+<pre><span class="tk-k">def</span> <span class="tk-f">walk</span>(node, hits):
+    <span class="tk-c"># any dict with all four channels is a colour</span>
+    <span class="tk-k">if</span> <span class="tk-f">isinstance</span>(node, <span class="tk-t">dict</span>):
+        <span class="tk-k">if</span> {<span class="tk-s">"Red"</span>, <span class="tk-s">"Green"</span>, <span class="tk-s">"Blue"</span>} &lt;= node.<span class="tk-f">keys</span>():
+            rgb = (node[<span class="tk-s">"Red"</span>], node[<span class="tk-s">"Green"</span>], node[<span class="tk-s">"Blue"</span>])
+            <span class="tk-k">if</span> rgb == (<span class="tk-n">255</span>, <span class="tk-n">6</span>, <span class="tk-n">181</span>):
+                hits.<span class="tk-f">append</span>(node)
+        <span class="tk-k">for</span> v <span class="tk-k">in</span> node.<span class="tk-f">values</span>():
+            <span class="tk-f">walk</span>(v, hits)</pre>
+            </div>
+            <table>
+              <thead><tr><th>Source</th><th>Files</th><th>Hits</th></tr></thead>
+              <tbody>
+                <tr><td>quest / scene</td><td>3,312</td><td>0</td></tr>
+                <tr><td>inkwidget / inkstyle</td><td>29,800</td><td>0</td></tr>
+                <tr><td>arcade strings</td><td>1</td><td>1</td></tr>
+              </tbody>
+            </table>
+            <ul>
+              <li>Check the fix against one known inkstyle colour before trusting a zero.</li>
+              <li>Re-run every earlier colour result: they were all produced blind.</li>
+            </ul>
+          </div>
+          <div class="msg-meta"><span></span><span class="micro">277.093.522.00.1</span></div>
+          <div class="msg-actions"><span>Copy</span><span>Retry</span><span>▲</span><span>▼</span></div>
+        </div>
+
+        <div class="msg v">
+          <div class="bubble frame cut-bl">
+            <p>holdin' out for a hit in the arcade strings then. nice work choom</p>
+          </div>
+        </div>
+
+        <div class="msg npc">
+          <div class="bubble frame cut-br">
+            <p>That one hit is the high-score text "FF06B5" in the arcade, which is already known. The colour itself appears nowhere in the UI or quest data.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="composer-wrap">
+      <div class="inner">
+        <div class="composer-label"><span class="lbl">SEND REPLY</span><span class="micro">neuro netprotocol 3888_m</span></div>
+        <div class="composer frame cut-br">
+          <textarea placeholder="Reply to Claude..."></textarea>
+          <div class="composer-bar">
+            <span class="icon-btn">+</span>
+            <span class="pill">Research</span>
+            <span class="pill">Opus 5.5</span>
+            <span class="send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+          </div>
+        </div>
+        <div class="disclaimer"><span>Claude can make mistakes. Please double-check responses.</span><span class="esc"><span class="key">ESC</span>Close</span></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="controls" id="controls">
+  <b>Mockup controls</b>
+  <div class="grp"><span>Preset</span><button data-k="preset" data-v="phone">Phone</button><button data-k="preset" data-v="journal">Journal</button><button data-k="preset" data-v="johnny">Johnny</button></div>
+  <div class="grp"><span>Body</span><button data-k="body" data-v="calm">Calm</button><button data-k="body" data-v="game">Game</button></div>
+  <div class="grp"><span>Noise</span><button data-k="noise" data-v="on">On</button><button data-k="noise" data-v="off">Off</button></div>
+</div>
+
+<script>
+  // ---------- Background noise generator (seeded, so the layout is stable) ----------
+  (() => {
+    let seed = 2077;
+    const rnd = () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 2 ** 32;
+    const int = (a, b) => a + Math.floor(rnd() * (b - a + 1));
+    const hex = n => int(0, 255).toString(16).toUpperCase().padStart(2, '0');
+    const svg = (w, h, body) => `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${body}</svg>`;
+
+    const barcode = (w, h) => {
+      let x = 0, bars = '';
+      while (x < w) { const bw = int(1, 3); bars += `<rect x="${x}" y="0" width="${bw}" height="${h}"/>`; x += bw + int(1, 3); }
+      return svg(w, h, bars);
+    };
+    const hexdump = (rows, egg) => Array.from({ length: rows }, (_, i) => {
+      const bytes = Array.from({ length: 6 }, hex);
+      if (i === egg) bytes.splice(2, 3, 'FF', '06', 'B5');
+      return `0x${(0x7f3a0 + i * 8).toString(16).toUpperCase()}  ${bytes.join(' ')}`;
+    }).join('\n');
+    const readout = rows => Array.from({ length: rows }, () =>
+      `${rnd().toFixed(5)}  ${int(0, 9)} . ${int(0, 9)} ${int(0, 9)} ${int(0, 9)} ${int(0, 9)}  ${int(0, 9)}`).join('\n');
+    const bits = rows => Array.from({ length: rows }, (_, i) =>
+      i % 6 === 5 ? '' : Array.from({ length: 4 }, () => int(0, 1)).join('')).join('\n');
+    const ruler = h => {
+      let t = `<line x1="10" y1="0" x2="10" y2="${h}" stroke-width="1"/>`;
+      for (let y = 0; y <= h; y += 8) t += `<line x1="${y % 40 ? 6 : 2}" y1="${y}" x2="10" y2="${y}" stroke-width="1"/>`;
+      for (let y = 20; y < h; y += 60) t += `<rect x="13" y="${y}" width="5" height="5" fill="none" stroke-width="1"/>`;
+      return svg(20, h, t);
+    };
+    const dots = (cols, rows) => {
+      let d = '';
+      for (let c = 0; c < cols; c++) for (let r = 0; r < rows; r++) if (rnd() > .25) d += `<circle cx="${c * 7 + 2}" cy="${r * 7 + 2}" r="1"/>`;
+      return svg(cols * 7, rows * 7, d);
+    };
+
+    const place = (root, items) => items.forEach(([pos, html, cls = '']) => {
+      const el = document.createElement('div');
+      el.className = cls; el.style.cssText = pos; el.innerHTML = html;
+      root.appendChild(el);
+    });
+
+    place(document.getElementById('noise-side'), [
+      ['left:3px; top:34%;', 'SYS.LINK // NC.WATSON.KABUKI :: 0451-77 :: NETWATCH NODE 3A', 'vtext'],
+      ['left:3px; bottom:90px;', 'BIOMON 98.6 / OK  ·  CHROME 34%', 'vtext alt'],
+    ]);
+
+    // Each module: [index, label, body html, extra class]
+    const rail = (side, mods) => {
+      const el = document.createElement('div');
+      el.className = `rail ${side}`;
+      el.innerHTML = mods.map(([i, label, body, cls = '']) =>
+        `<div class="mod ${cls}"><div class="mod-head"><span>${i}</span><span>${label}</span></div>` +
+        `<div class="mod-body">${body}</div></div>`).join('');
+      document.getElementById('noise-main').appendChild(el);
+    };
+
+    rail('l', [
+      ['01', 'NC-0451-77-B', barcode(140, 14), 'flick slow'],
+      ['02', 'MEM.DUMP', hexdump(7, 4)],
+      ['03', 'GRID.SCAN', dots(20, 4), 'alt'],
+      ['04', 'TELEMETRY', readout(3), 'end'],
+    ]);
+    rail('r', [
+      ['01', 'CLEARANCE', '<span class="tag"><b>SPEC OPS</b><span>COMBAT COLLAB.\nDEFENCE PROGRAM</span></span>', 'alt'],
+      ['02', 'SIGNAL', `<div>${bits(11)}</div>` + ruler(100)],
+      ['03', 'AUTH.KEY', barcode(140, 10), 'flick'],
+      ['04', '277.093.522.00.1', dots(20, 3), 'end alt'],
+    ]);
+  })();
+
+  const b = document.body;
+  const sync = () => document.querySelectorAll('button[data-k]').forEach(btn =>
+    btn.setAttribute('aria-pressed', b.dataset[btn.dataset.k] === btn.dataset.v));
+  // data-toggle: pressing an active button switches back to that value (Focus on/off)
+  const set = btn => {
+    const { k, v, toggle } = btn.dataset;
+    b.dataset[k] = toggle && b.dataset[k] === v ? toggle : v; sync();
+  };
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('button[data-k]'); if (btn) set(btn);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key.toLowerCase() !== 'f' || e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.target.closest('textarea, input, [contenteditable]')) return;
+    set(document.querySelector('.modes .focus'));
+  });
+  const q = new URLSearchParams(location.search);
+  ['preset', 'body', 'noise'].forEach(k => q.get(k) && (b.dataset[k] = q.get(k)));
+  sync();
+</script>
+</body>
+</html>

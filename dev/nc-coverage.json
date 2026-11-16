@@ -1,0 +1,1594 @@
+{
+ "pages": [
+  "/chat/:id",
+  "/code/artifacts",
+  "/new",
+  "/project/:id"
+ ],
+ "items": {
+  "cds:Button": {
+   "count": 347,
+   "sample": {
+    "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap select-none cursor-[var(--cd",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:Icon": {
+   "count": 532,
+   "sample": {
+    "cls": "",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"Anthropicons-FizzyLake\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:ProductLogo": {
+   "count": 6,
+   "sample": {
+    "cls": "inline-flex flex-col items-start",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:SegmentedControl": {
+   "count": 7,
+   "sample": {
+    "cls": "relative inline-flex w-fit shrink-0 items-stretch h-control font-sans rounded bg-[var(--cds-segmented-control-track)] p-px",
+    "bg": "color(srgb 0.968628 0.984314 0.784314 / 0.05)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "7px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:Shortcut": {
+   "count": 15,
+   "sample": {
+    "cls": "inline-flex shrink-0 items-baseline gap-[0.15em] text-caption [&:where(:root[dir=rtl]_:dir(rtl))]:flex-row-reverse [--cds-shortcut-cap-ink:c",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgba(255, 255, 255, 0.57)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "newchat"
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:Avatar": {
+   "count": 7,
+   "sample": {
+    "cls": "inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full font-sans font-medium size-[var(--cds-avatar-xs)] ",
+    "bg": "color(srgb 0.968628 0.984314 0.784314 / 0.1)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "sidebar"
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:ResizeHandle": {
+   "count": 8,
+   "sample": {
+    "cls": "cds-reset group/resize outline-none focus-visible:outline-hidden w-3 cursor-col-resize absolute inset-y-0 end-[calc(-6px_-_(var(--cds-ring-o",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:Toolbar": {
+   "count": 6,
+   "sample": {
+    "cls": "flex items-center gap-1 px-[var(--cds-toolbar-pad-inline,0px)] pt-[var(--cds-toolbar-pad-block,0.25rem)] pb-[calc(var(--cds-toolbar-pad-bloc",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:AssistantMessage": {
+   "count": 3,
+   "sample": {
+    "cls": "group/message-row relative flex w-full min-w-0 flex-col gap-xs break-words select-text print:block",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(0, 0, 0, 0)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "cds:Prose": {
+   "count": 5,
+   "sample": {
+    "cls": "prose stacks:[&_li:not(:where([data-cds-theme],[data-cds-theme]_*))::marker]:[--cds-text-secondary:var(--cds-text-primary)]",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "cds:TurnStatus": {
+   "count": 3,
+   "sample": {
+    "cls": "group/status flex w-full min-w-0 flex-col -my-pad-xs",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "cds:Card": {
+   "count": 14,
+   "sample": {
+    "cls": "group/card relative isolate flex flex-col rounded-card after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "12px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new"
+   ]
+  },
+  "cds:CardLink": {
+   "count": 14,
+   "sample": {
+    "cls": "cds-reset outline-none after:absolute after:inset-0 after:rounded-card after:content-[''] cursor-pointer",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new"
+   ]
+  },
+  "cds:MessageActions": {
+   "count": 5,
+   "sample": {
+    "cls": "flex items-center select-none",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "cds:UserMessage": {
+   "count": 2,
+   "sample": {
+    "cls": "group/message-row flex w-full min-w-0 flex-col gap-xs font-sans ms-auto items-end",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "cds:RelativeTime": {
+   "count": 38,
+   "sample": {
+    "cls": "flex h-control items-center ps-sm pe-sm first:ps-0 last:pe-0 text-caption font-normal text-muted select-none",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(138, 144, 72)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:Spark": {
+   "count": 5,
+   "sample": {
+    "cls": "h-[var(--cds-spark-size)] w-[var(--cds-spark-size)] shrink-0",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new"
+   ]
+  },
+  "cds:ChatComposerDock": {
+   "count": 1,
+   "sample": {
+    "cls": "pointer-events-none flex w-full min-w-0 flex-col *:pointer-events-auto",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "cds:ChatComposerNotices": {
+   "count": 7,
+   "sample": {
+    "cls": "w-full px-2 md:px-0",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:ChatComposer": {
+   "count": 6,
+   "sample": {
+    "cls": "flex w-full min-w-0 flex-col font-sans in-data-cds-dock-masked:bg-page px-2 md:px-0",
+    "bg": "rgb(10, 11, 6)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:ChatComposerEditor": {
+   "count": 6,
+   "sample": {
+    "cls": "w-full max-h-96 min-h-[var(--cmp-row-h)] overflow-y-auto break-words [--cmp-type-size:max(var(--cds-font-size-text-entry-floor,0px),var(--cm",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(170, 185, 255)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "composer"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:Editor": {
+   "count": 6,
+   "sample": {
+    "cls": "tiptap ProseMirror",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(170, 185, 255)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "composer"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:ChatComposerOverlay": {
+   "count": 6,
+   "sample": {
+    "cls": "absolute inset-0 overflow-hidden [--cmp-type-size:max(var(--cds-font-size-text-entry-floor,0px),var(--cmp-font-size,var(--cds-font-size-pros",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(170, 185, 255)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "composer"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:ChatComposerActions": {
+   "count": 6,
+   "sample": {
+    "cls": "contents",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(170, 185, 255)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "composer"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:ChatComposerChin": {
+   "count": 6,
+   "sample": {
+    "cls": "relative z-0 overflow-clip px-2 -mx-2 pt-2 -mt-2 @container [--cmp-pad-x:0.5rem] compact:[--cmp-pad-x:0.5rem] comfortable:[--cmp-pad-x:0.5re",
+    "bg": "rgb(10, 11, 6)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:SplitDropdownButton": {
+   "count": 6,
+   "sample": {
+    "cls": "relative inline-flex w-fit shrink-0 items-stretch rounded-[calc(var(--cds-radius)+var(--cds-button-radius-add,0px))] group/split stacks:not-",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(201, 209, 122)",
+    "radius": "6px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:ModelSelector": {
+   "count": 6,
+   "sample": {
+    "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap select-none cursor-[var(--cd",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "6px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "cds:Panel": {
+   "count": 1,
+   "sample": {
+    "cls": "isolate flex min-h-0 min-w-0 flex-col [&>:where([data-cds=Toolbar]:not([data-flush]))]:px-[var(--cds-panel-header-pad-inline)] [&>:where([da",
+    "bg": "rgb(10, 11, 6)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "cds:SkeletonGroup": {
+   "count": 1,
+   "sample": {
+    "cls": "text-prose flex flex-col overflow-hidden fade-out-bottom h-[calc(100vh-12.5rem)]",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "cds:Skeleton": {
+   "count": 11,
+   "sample": {
+    "cls": "bg-[var(--cds-skeleton-base)] box-content h-[1lh] w-72 max-w-[85%] rounded-card py-md text-heading",
+    "bg": "color(srgb 0.968628 0.984314 0.784314 / 0.075)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "12px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "cds:Toast": {
+   "count": 7,
+   "sample": {
+    "cls": "cds-reset pointer-events-none fixed flex w-[360px] max-w-[calc(100vw-2rem)] flex-col-reverse gap-md [&:not([data-f6-visit])>[data-base-ui-fo",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "role:radiogroup": {
+   "count": 7,
+   "sample": {
+    "cls": "relative inline-flex w-fit shrink-0 items-stretch h-control font-sans rounded bg-[var(--cds-segmented-control-track)] p-px",
+    "bg": "color(srgb 0.968628 0.984314 0.784314 / 0.05)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "7px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "role:radio": {
+   "count": 14,
+   "sample": {
+    "cls": "cds-reset relative z-[1] inline-flex h-full items-center justify-center gap-1.5 select-none border-0 bg-transparent outline-none focus-visib",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "5px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "role:button": {
+   "count": 14,
+   "sample": {
+    "cls": "hide-focus-ring focus-visible:outline-hidden focus-visible:shadow-[inset_0_0_0_1px_var(--cds-fill-accent),0_0_6px_0_color-mix(in_srgb,var(--",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 106)",
+    "radius": "6px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "row"
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "role:img": {
+   "count": 18,
+   "sample": {
+    "cls": "text-muted",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 106)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"Anthropicons-FizzyLake\"",
+    "nc": "row"
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "role:status": {
+   "count": 81,
+   "sample": {
+    "cls": "sr-only",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "sidebar"
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "role:separator": {
+   "count": 11,
+   "sample": {
+    "cls": "cds-reset group/resize outline-none focus-visible:outline-hidden w-3 cursor-col-resize absolute inset-y-0 end-[calc(-6px_-_(var(--cds-ring-o",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "role:toolbar": {
+   "count": 7,
+   "sample": {
+    "cls": "flex items-center gap-1 px-[var(--cds-toolbar-pad-inline,0px)] pt-[var(--cds-toolbar-pad-block,0.25rem)] pb-[calc(var(--cds-toolbar-pad-bloc",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "role:feed": {
+   "count": 1,
+   "sample": {
+    "cls": "",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "role:article": {
+   "count": 5,
+   "sample": {
+    "cls": "rounded-lg focus-visible:shadow-focus focus-visible:outline-hidden",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "role:group": {
+   "count": 12,
+   "sample": {
+    "cls": "relative group/copy bg-bg-000/50 border-0.5 border-border-400 rounded-[var(--msg-block-radius,0.5rem)] focus:outline-none focus-visible:ring",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "1px rgba(0, 0, 0, 0)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "code"
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "role:presentation": {
+   "count": 27,
+   "sample": {
+    "cls": "",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "role:textbox": {
+   "count": 6,
+   "sample": {
+    "cls": "tiptap ProseMirror",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(170, 185, 255)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "composer"
+   },
+   "pages": [
+    "/chat/:id",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "role:note": {
+   "count": 1,
+   "sample": {
+    "cls": "text-muted-as-secondary [&_a]:text-inherit text-center",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgba(255, 255, 255, 0.57)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "role:none": {
+   "count": 1,
+   "sample": {
+    "cls": "isolate flex min-h-0 min-w-0 flex-col [&>:where([data-cds=Toolbar]:not([data-flush]))]:px-[var(--cds-panel-header-pad-inline)] [&>:where([da",
+    "bg": "rgb(10, 11, 6)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "role:region": {
+   "count": 8,
+   "sample": {
+    "cls": "pointer-events-auto relative outline-none focus-visible:outline-hidden [:not([data-f6-visit])>&>[data-base-ui-focus-guard]]:hidden",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "0px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id",
+    "/code/artifacts",
+    "/new",
+    "/project/:id"
+   ]
+  },
+  "rounded:button.cds-reset": {
+   "count": 15,
+   "sample": {
+    "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap select-none cursor-[var(--cd",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:span.absolute": {
+   "count": 32,
+   "sample": {
+    "cls": "absolute -z-[1] rounded-[inherit] inset-0 cds-btn-squish stacks:transform-none!",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:div.relative": {
+   "count": 2,
+   "sample": {
+    "cls": "relative inline-flex w-fit shrink-0 items-stretch h-control font-sans rounded bg-[var(--cds-segmented-control-track)] p-px",
+    "bg": "color(srgb 0.968628 0.984314 0.784314 / 0.05)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "7px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:div.pointer-events-none": {
+   "count": 1,
+   "sample": {
+    "cls": "pointer-events-none absolute inset-0 overflow-clip rounded",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "7px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:div.invisible": {
+   "count": 1,
+   "sample": {
+    "cls": "invisible absolute left-0 origin-left rounded-[calc(var(--cds-radius)-1px)] bg-[var(--cds-segmented-control-thumb)] forced-colors:border-2 f",
+    "bg": "color(srgb 0.968628 0.984314 0.784314 / 0.1)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "6px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:span.cds-reset": {
+   "count": 3,
+   "sample": {
+    "cls": "cds-reset relative z-[1] inline-flex h-full items-center justify-center gap-1.5 select-none border-0 bg-transparent outline-none focus-visib",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "5px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/chat/:id",
+    "/new"
+   ]
+  },
+  "rounded:button.w-full": {
+   "count": 2,
+   "sample": {
+    "cls": "w-full shrink-0 border-none text-start text-[length:var(--df-row-font)] text-secondary flex items-center gap-[var(--df-row-gap)] h-[var(--df",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 106)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "sidebar"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:div.group": {
+   "count": 3,
+   "sample": {
+    "cls": "group hit-row [--cds-hit-gap-y:7px] rounded-[var(--df-radius-pill)] hover:bg-[var(--df-hover)] focus-visible:bg-[var(--df-hover)] has-[:focu",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "sidebar"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:a.w-full": {
+   "count": 26,
+   "sample": {
+    "cls": "w-full shrink-0 border-none text-start text-[length:var(--df-row-font)] text-secondary flex items-center gap-[var(--df-row-gap)] h-[var(--df",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 106)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "sidebar"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:button.hide-focus-ring": {
+   "count": 3,
+   "sample": {
+    "cls": "hide-focus-ring focus-visible:outline-hidden focus-visible:shadow-[inset_0_0_0_1px_var(--cds-fill-accent),0_0_6px_0_color-mix(in_srgb,var(--",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgba(255, 255, 255, 0.57)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "sidebar"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:a.cds-reset": {
+   "count": 1,
+   "sample": {
+    "cls": "cds-reset group/btn relative isolate inline-flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap select-none cursor-[var(--cd",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "sidebar"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:span.inline-flex": {
+   "count": 2,
+   "sample": {
+    "cls": "inline-flex rounded-[calc(var(--cds-radius)+var(--cds-button-radius-add,0px))] outline-none focus-visible:outline-hidden [&[data-initial-foc",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:div.rounded-lg": {
+   "count": 5,
+   "sample": {
+    "cls": "rounded-lg focus-visible:shadow-focus focus-visible:outline-hidden",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:div.flex": {
+   "count": 3,
+   "sample": {
+    "cls": "flex min-w-0 gap-xs text-start font-sans text-body font-normal items-center py-[calc((var(--cds-h-control)_-_1lh)_/_2)] w-stretch px-xs ms-[",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:div.group/card": {
+   "count": 2,
+   "sample": {
+    "cls": "group/card relative isolate flex flex-col rounded-card after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "12px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:span.cds-card-fill": {
+   "count": 2,
+   "sample": {
+    "cls": "cds-card-fill pointer-events-none absolute inset-0 -z-[1] m-0 rounded-[inherit]",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "12px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:div.cds-card-body": {
+   "count": 2,
+   "sample": {
+    "cls": "cds-card-body flex min-h-0 flex-1 flex-col self-stretch [gap:inherit] [align-items:inherit] [justify-content:inherit] rounded-[inherit] p-lg",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "12px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:span.flex": {
+   "count": 2,
+   "sample": {
+    "cls": "flex size-control comfortable:size-[calc(2rem*var(--cds-rem-scale,1))] shrink-0 items-center justify-center rounded-chip text-tint-red bg-ti",
+    "bg": "rgba(220, 60, 61, 0.12)",
+    "color": "rgb(241, 119, 120)",
+    "radius": "5.5px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "npc"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:pre.code-block__code": {
+   "count": 3,
+   "sample": {
+    "cls": "code-block__code !my-0 !rounded-[var(--msg-block-radius,0.5rem)] !text-sm !leading-relaxed p-3.5",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(94, 246, 255)",
+    "radius": "12px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Share Tech Mono\"",
+    "nc": "code"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:button.z-[1]": {
+   "count": 1,
+   "sample": {
+    "cls": "z-[1] size-9 inline-flex items-center justify-center absolute left-1/2 -translate-x-1/2 bottom-5 -translate-y-[var(--composer-banners-h,0px)",
+    "bg": "oklab(0.181277 -0.00843556 0.0156074 / 0.8)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "2147480000px",
+    "border": "1px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "rounded:div.can-focus": {
+   "count": 3,
+   "sample": {
+    "cls": "can-focus relative -mx-2 flex items-center gap-2.5 rounded px-2 py-1.5 group cursor-interactive hover:bg-fill-ghost-hover",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(226, 234, 116)",
+    "radius": "8px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/chat/:id"
+   ]
+  },
+  "cds:Page": {
+   "count": 1,
+   "sample": {
+    "cls": "flex w-full flex-col",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "cds:PageHeader": {
+   "count": 1,
+   "sample": {
+    "cls": "@container flex flex-wrap justify-between gap-x-md gap-y-4",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "cds:Tabs": {
+   "count": 2,
+   "sample": {
+    "cls": "",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "cds:Badge": {
+   "count": 4,
+   "sample": {
+    "cls": "inline-flex items-center gap-1 align-middle h-control-nested whitespace-nowrap rounded-chip px-sm font-sans text-caption font-medium font-ba",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(159, 250, 255)",
+    "radius": "2px",
+    "border": "1px color(srgb 0.145098 0.490196 0.878431 / 0.4)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "cds:Dialog": {
+   "count": 2,
+   "sample": {
+    "cls": "draggable-none after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-backdrop after:opacity-0 after:z-50 a",
+    "bg": "rgb(8, 11, 18)",
+    "color": "rgb(242, 213, 68)",
+    "radius": "2px",
+    "border": "2px rgb(255, 95, 86)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/code/artifacts",
+    "/new"
+   ]
+  },
+  "role:tablist": {
+   "count": 2,
+   "sample": {
+    "cls": "flex items-center font-sans data-[orientation=horizontal]:[&>[role=tab]:first-child]:before:start-0 data-[orientation=horizontal]:[&>:first-",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "role:tab": {
+   "count": 9,
+   "sample": {
+    "cls": "relative isolate inline-flex shrink-0 items-center justify-center gap-1.5 rounded-none h-control px-md cds-reset whitespace-nowrap select-no",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "role:list": {
+   "count": 6,
+   "sample": {
+    "cls": "relative -m-2 flex items-start gap-3 overflow-x-auto overflow-y-hidden p-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/code/artifacts",
+    "/new"
+   ]
+  },
+  "role:tabpanel": {
+   "count": 1,
+   "sample": {
+    "cls": "flex flex-col",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "role:dialog": {
+   "count": 2,
+   "sample": {
+    "cls": "draggable-none after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-backdrop after:opacity-0 after:z-50 a",
+    "bg": "rgb(8, 11, 18)",
+    "color": "rgb(242, 213, 68)",
+    "radius": "2px",
+    "border": "2px rgb(255, 95, 86)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/code/artifacts",
+    "/new"
+   ]
+  },
+  "role:combobox": {
+   "count": 1,
+   "sample": {
+    "cls": "flex-1 bg-transparent border-none text-body-regular text-primary min-w-[5rem] py-1.5 placeholder:text-muted !outline-none !ring-0 !shadow-no",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgb(58, 26, 30)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "role:listbox": {
+   "count": 1,
+   "sample": {
+    "cls": "flex shrink-0 flex-col gap-1",
+    "bg": "rgb(20, 17, 11)",
+    "color": "rgb(94, 246, 255)",
+    "radius": "2px",
+    "border": "2px rgb(255, 95, 86)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "role:option": {
+   "count": 9,
+   "sample": {
+    "cls": "w-full text-start px-3 py-2 rounded-lg flex items-center justify-between gap-3 truncate text-body-regular bg-fill-ghost-hover text-primary",
+    "bg": "rgb(124, 38, 38)",
+    "color": "rgb(94, 246, 255)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "gray-bg:div.bg-surface-3": {
+   "count": 1,
+   "sample": {
+    "cls": "bg-surface-3 rounded-[calc(var(--cds-radius-composer)+0.375rem)] border-0.5 border-strong shadow-2xl overflow-hidden",
+    "bg": "rgb(48, 48, 48)",
+    "color": "rgb(242, 213, 68)",
+    "radius": "2px",
+    "border": "1px color(srgb 1 0.85098 0.827451 / 0.2)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "gray-bg:div.pointer-events-none": {
+   "count": 1,
+   "sample": {
+    "cls": "pointer-events-none relative z-2 -mx-2.5 h-2.5 shrink-0 bg-surface-3",
+    "bg": "rgb(48, 48, 48)",
+    "color": "rgb(242, 213, 68)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "gray-bg:div.group/footer": {
+   "count": 1,
+   "sample": {
+    "cls": "group/footer pointer-coarse:hidden flex-shrink-0 pe-4 ps-5 py-2.5 bg-surface-3 border-t-[length:max(var(--cds-toolbar-line,0px),0.5px)]",
+    "bg": "rgb(48, 48, 48)",
+    "color": "rgb(242, 213, 68)",
+    "radius": "2px",
+    "border": "1px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/code/artifacts"
+   ]
+  },
+  "cds:ChatComposerTray": {
+   "count": 4,
+   "sample": {
+    "cls": "-mx-[var(--cmp-pad-x)] -mb-2 compact:-mb-2 comfortable:-mb-2 min-w-0 overflow-hidden rounded-b-[inherit] empty:hidden",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(127, 248, 255)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "composer"
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "cds:Collapsible": {
+   "count": 4,
+   "sample": {
+    "cls": "flex w-full flex-col",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "cds:CardMedia": {
+   "count": 12,
+   "sample": {
+    "cls": "self-stretch -mx-pad-lg overflow-hidden first:-mt-pad-lg first:rounded-t-card first:not-only:border-b last:-mb-pad-lg last:rounded-b-card la",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "cds:Menu": {
+   "count": 1,
+   "sample": {
+    "cls": "cds-reset draggable-none group/menu-popup relative flex flex-col min-w-[128px] max-w-[320px] max-h-[var(--available-height)] bg-surface-3 sh",
+    "bg": "rgb(20, 17, 11)",
+    "color": "rgb(94, 246, 255)",
+    "radius": "2px",
+    "border": "2px rgb(255, 95, 86)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "role:menu": {
+   "count": 1,
+   "sample": {
+    "cls": "cds-reset draggable-none group/menu-popup relative flex flex-col min-w-[128px] max-w-[320px] max-h-[var(--available-height)] bg-surface-3 sh",
+    "bg": "rgb(20, 17, 11)",
+    "color": "rgb(94, 246, 255)",
+    "radius": "2px",
+    "border": "2px rgb(255, 95, 86)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "role:menuitem": {
+   "count": 10,
+   "sample": {
+    "cls": "cds-reset flex w-full items-center gap-xs compact:px-2 comfortable:px-2.5 py-[calc((var(--cds-h-control)-var(--cds-leading-body))/2)] rounde",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(94, 246, 255)",
+    "radius": "2px",
+    "border": "0px rgba(0, 0, 0, 0.08)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "cds:Meter": {
+   "count": 6,
+   "sample": {
+    "cls": "w-full",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(242, 213, 68)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "cds:TextLink": {
+   "count": 5,
+   "sample": {
+    "cls": "cds-reset cds-text-link cds-text-link-underline inline cursor-pointer",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(159, 250, 255)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "cds:Switch": {
+   "count": 1,
+   "sample": {
+    "cls": "cds-reset relative inline-flex shrink-0 rounded-full border-0 outline-none focus-visible:outline-hidden bg-[var(--cds-switch-track)] hover:b",
+    "bg": "rgb(94, 246, 255)",
+    "color": "rgb(242, 213, 68)",
+    "radius": "2147480000px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "cds:Field": {
+   "count": 1,
+   "sample": {
+    "cls": "flex flex-col gap-xs font-sans",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(242, 213, 68)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "cds:TextInput": {
+   "count": 1,
+   "sample": {
+    "cls": "h-control ps-md rounded bg-fill-field shadow-field-ring data-[invalid]:shadow-field-invalid font-sans text-body font-normal text-primary tra",
+    "bg": "color(srgb 1 0.85098 0.827451 / 0.05)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "role:meter": {
+   "count": 6,
+   "sample": {
+    "cls": "w-full overflow-hidden rounded-full forced-color-adjust-none forced-colors:bg-[color:Canvas] forced-colors:outline forced-colors:outline-[co",
+    "bg": "color(srgb 0.368627 0.964706 1 / 0.12)",
+    "color": "rgb(242, 213, 68)",
+    "radius": "2147480000px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "role:switch": {
+   "count": 1,
+   "sample": {
+    "cls": "cds-reset relative inline-flex shrink-0 rounded-full border-0 outline-none focus-visible:outline-hidden bg-[var(--cds-switch-track)] hover:b",
+    "bg": "rgb(94, 246, 255)",
+    "color": "rgb(242, 213, 68)",
+    "radius": "2147480000px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "cds:DataTable": {
+   "count": 1,
+   "sample": {
+    "cls": "min-w-0 w-stretch",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/project/:id"
+   ]
+  },
+  "cds:Table": {
+   "count": 1,
+   "sample": {
+    "cls": "w-full border-separate border-spacing-0 whitespace-nowrap font-sans text-body font-normal text-primary table-fixed",
+    "bg": "rgba(0, 0, 0, 0)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": "main"
+   },
+   "pages": [
+    "/project/:id"
+   ]
+  },
+  "cds:PreviewCard": {
+   "count": 2,
+   "sample": {
+    "cls": "draggable-none flex flex-col gap-1 min-w-[var(--preview-card-min-w,200px)] max-w-[var(--preview-card-max-w,360px)] rounded-card bg-surface-3",
+    "bg": "rgb(48, 48, 48)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  },
+  "gray-bg:div.draggable-none": {
+   "count": 2,
+   "sample": {
+    "cls": "draggable-none flex flex-col gap-1 min-w-[var(--preview-card-min-w,200px)] max-w-[var(--preview-card-max-w,360px)] rounded-card bg-surface-3",
+    "bg": "rgb(48, 48, 48)",
+    "color": "rgb(236, 100, 88)",
+    "radius": "2px",
+    "border": "0px rgba(255, 255, 255, 0.04)",
+    "font": "\"NC Rajdhani\"",
+    "nc": ""
+   },
+   "pages": [
+    "/new"
+   ]
+  }
+ }
+}

@@ -1,0 +1,453 @@
+/* Night City for Claude.
+   Layer 1 (colors): overrides claude.ai's own color variables, so the whole UI
+   recolors even where no hook matched. Layer 2 (skin): frames, fonts and labels on
+   elements content.js tagged with data-nc roles. Everything is gated on
+   html[data-nc-on], so switching the extension off restores the site untouched. */
+
+/* ======================= Tokens ======================= */
+:root[data-nc-on] {
+  --nc-cut: 12px;
+  --nc-ui: 'NC Rajdhani', sans-serif;
+  --nc-body: 'NC Rajdhani', sans-serif;
+  --nc-code: 'NC Share Tech Mono', monospace;
+}
+
+:root[data-nc-on][data-nc-preset="phone"] {
+  --nc-red: #ff5f56; --nc-cyan: #5ef6ff;
+  --nc-bg: #07090d; --nc-glow: rgba(150, 36, 36, .30);
+  --nc-line: #2a3a3e; --nc-label: #ff5f56; --nc-heading: #8ee8ee;
+  --nc-npc-fill: #10181c; --nc-npc-border: #4d6f72; --nc-npc-text: #d3dfdd; --nc-npc-text-calm: #c9d3d2; --nc-npc-accent: #8ee8ee;
+  --nc-v-fill: #0b261d; --nc-v-border: #36c98a; --nc-v-text: #7af0b4;
+  --nc-row-fill: #0c1216; --nc-row-border: #22333a; --nc-row-text: #9fc6c6;
+  --nc-row-active-fill: #12302c; --nc-row-active-border: #36c98a; --nc-row-active-text: #7af0b4;
+  --nc-send-fill: #04161a;
+}
+
+:root[data-nc-on][data-nc-preset="journal"] {
+  --nc-red: #ff5f56; --nc-cyan: #5ef6ff;
+  --nc-bg: #080b12; --nc-glow: rgba(190, 40, 40, .34);
+  --nc-line: #3a1a1e; --nc-label: #ff5f56; --nc-heading: #ff5f56;
+  --nc-npc-fill: #14110b; --nc-npc-border: #d8b62c; --nc-npc-text: #f2d544; --nc-npc-text-calm: #e8dcb0; --nc-npc-accent: #fcee0a;
+  --nc-v-fill: #0b2125; --nc-v-border: #5ef6ff; --nc-v-text: #7ff8ff;
+  --nc-row-fill: #150c10; --nc-row-border: #3a1a1e; --nc-row-text: #5ef6ff;
+  --nc-row-active-fill: #7c2626; --nc-row-active-border: #ff5f56; --nc-row-active-text: #5ef6ff;
+  --nc-send-fill: #04161a;
+}
+
+:root[data-nc-on][data-nc-preset="johnny"] {
+  --nc-red: #d9e35f; --nc-cyan: #6f8cff;
+  --nc-bg: #0a0b06; --nc-glow: rgba(150, 160, 40, .20);
+  --nc-line: #2e3216; --nc-label: #d9e35f; --nc-heading: #7f96ff;
+  --nc-npc-fill: #11130a; --nc-npc-border: #a9b244; --nc-npc-text: #e2ea74; --nc-npc-text-calm: #dde2b4; --nc-npc-accent: #eef47a;
+  --nc-v-fill: #0f1429; --nc-v-border: #5b7cf0; --nc-v-text: #aab9ff;
+  --nc-row-fill: #0f1108; --nc-row-border: #2e3216; --nc-row-text: #e2ea6a;
+  --nc-row-active-fill: #5b7cf0; --nc-row-active-border: #5b7cf0; --nc-row-active-text: #0d1028;
+  --nc-send-fill: #0c1230;
+}
+
+:root[data-nc-on][data-nc-body="calm"] {
+  --nc-body: 'NC Barlow', sans-serif;
+  --nc-npc-text: var(--nc-npc-text-calm);
+}
+
+/* ======================= Base ======================= */
+:root[data-nc-on], :root[data-nc-on] body { background: var(--nc-bg) !important; }
+/* Fonts go through claude.ai's own font variables: forcing font-family on every
+   element would also hit its icon font. Redeclared on .cds-root/.prose, which set their own. */
+:root[data-nc-on], :root[data-nc-on] :is(.cds-root, .prose) {
+  --font-anthropic-sans: var(--nc-ui) !important; --font-ui: var(--nc-ui) !important;
+  --font-sans-serif: var(--nc-ui) !important; --font-sans: var(--nc-ui) !important;
+  --cds-font-system: var(--nc-ui) !important; --cds-font-sans: var(--nc-ui) !important;
+  --cds-font-sans-display: var(--nc-ui) !important; --default-font-family: var(--nc-ui) !important;
+  --font-voice: var(--nc-ui) !important; --cds-font-voice: var(--nc-ui) !important;
+  --font-anthropic-serif: var(--nc-body) !important; --font-ui-serif: var(--nc-body) !important;
+  --font-serif: var(--nc-body) !important; --font-claude-response: var(--nc-body) !important;
+  --font-user-message: var(--nc-body) !important;
+  --_prose-face-serif: var(--nc-body) !important; --_prose-face-sans: var(--nc-body) !important;
+  --_prose-font-body: var(--nc-body) !important;
+  --_prose-font-heading: var(--nc-ui) !important; --_prose-font-heading-display: var(--nc-ui) !important;
+  --font-anthropic-mono: var(--nc-code) !important; --font-mono: var(--nc-code) !important;
+  --cds-font-mono: var(--nc-code) !important; --cds-font-mono-ui: var(--nc-code) !important;
+  --default-mono-font-family: var(--nc-code) !important;
+}
+:root[data-nc-on] body { font-family: var(--nc-ui) !important; }
+:root[data-nc-on] :is(pre, code, kbd, samp, pre *) { font-family: var(--nc-code) !important; }
+:root[data-nc-on] ::selection { background: #7c2626; color: #fff; }
+:root[data-nc-on] * { scrollbar-width: thin; scrollbar-color: var(--nc-red) transparent; }
+:root[data-nc-on] ::-webkit-scrollbar { width: 3px; height: 3px; }
+:root[data-nc-on] ::-webkit-scrollbar-thumb { background: var(--nc-red); }
+:root[data-nc-on] [data-nc~="npc"] a { color: var(--nc-cyan) !important; }
+
+/* Scanlines over everything (never blocks clicks) */
+:root[data-nc-on] body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 2147483000;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,.022) 0 1px, transparent 1px 3px);
+}
+
+/* ======================= Shapes =======================
+   claude.ai builds every rounded corner from these variables; near-square matches the
+   game UI. True circles (avatars, toggle knobs) use fixed classes and stay round. */
+:root[data-nc-on], :root[data-nc-on] :is(.cds-root, .dframe-root, .dframe-sidebar) {
+  --cds-radius: 2px !important; --cds-radius--xs: 2px !important; --cds-radius--sm: 2px !important;
+  --cds-radius--lg: 2px !important; --cds-radius-composer: 0px !important; --cds-panel-radius: 0px !important;
+  --cds-message-bubble-radius: 0px !important; --cds-checkbox-radius: 2px !important;
+  --cds-checkbox-radius--xs: 2px !important; --cds-checkbox-radius--sm: 2px !important; --cds-checkbox-radius--lg: 2px !important;
+  --cds-button-radius-add: 0px !important; --cds-button-radius-add--xs: 0px !important;
+  --cds-button-radius-add--sm: 0px !important; --cds-button-radius-add--lg: 0px !important;
+  --radius: 2px !important; --radius-xs: 2px !important; --radius-sm: 2px !important; --radius-md: 2px !important;
+  --radius-lg: 2px !important; --radius-xl: 2px !important; --radius-2xl: 2px !important; --radius-3xl: 2px !important;
+  --radius-card: 2px !important; --df-radius-pill: 2px !important; --msg-block-radius: 0px !important;
+}
+/* Components also set radii locally (buttons 8px, cards 12px, ...), which the variables
+   above can't reach. Square everything except real circles. */
+:root[data-nc-on] body *:not([class*="rounded-full"], [data-cds="Avatar"], [data-cds="Avatar"] *, img, svg, svg *,
+  [role="switch"], [role="switch"] *, #nc-overlay *) { border-radius: 2px !important; }
+
+/* ======================= Pop-up layers =======================
+   Matched by role, so new tooltips/dialogs/toasts are covered without new hooks. */
+:root[data-nc-on] [role="tooltip"] {
+  background: var(--nc-npc-fill) !important; color: var(--nc-npc-text) !important;
+  border: 1px solid var(--nc-npc-border) !important; border-radius: 0 !important;
+  font-family: var(--nc-ui) !important; font-weight: 600; letter-spacing: .05em; text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .6) !important;
+}
+:root[data-nc-on] [role="tooltip"] * { color: inherit; }
+/* Hover cards and floating panels: claude.ai paints these with a fixed #303030
+   instead of its color scale, so the palette alone misses them. */
+:root[data-nc-on] :is([data-cds="PreviewCard"], .bg-surface-3:is(.fixed, .absolute, [class*="shadow"])) {
+  background: var(--nc-npc-fill) !important; color: var(--nc-npc-text) !important;
+  border: 1px solid var(--nc-npc-border) !important; border-top: 2px solid var(--nc-red) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .6) !important;
+}
+:root[data-nc-on] [data-cds="PreviewCard"] :first-child { font-weight: 600; letter-spacing: .04em; }
+:root[data-nc-on] [role="tooltip"] [data-cds="Shortcut"] { font-family: var(--nc-code) !important; color: var(--nc-cyan) !important; }
+:root[data-nc-on] :is([role="dialog"], [role="alertdialog"]) {
+  background: var(--nc-bg) !important; color: var(--nc-npc-text);
+  border: 1px solid var(--nc-line) !important; border-top: 2px solid var(--nc-red) !important; border-radius: 0 !important;
+  box-shadow: 0 0 30px color-mix(in srgb, var(--nc-red) 14%, transparent), 0 20px 50px rgba(0, 0, 0, .7) !important;
+}
+:root[data-nc-on] :is([role="dialog"], [role="alertdialog"]) :is(h1, h2, h3) {
+  font-family: var(--nc-ui) !important; font-weight: 700 !important; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--nc-label) !important;
+}
+/* Toasts and status banners */
+:root[data-nc-on] :is([role="alert"], [role="status"]):not(:empty):not(.sr-only):not([class*="sr-only"]) {
+  border-radius: 0 !important;
+}
+/* Form fields: square, theme line, accent focus */
+:root[data-nc-on] :is(input:not([type="checkbox"], [type="radio"], [type="range"]), textarea, select):not([data-nc] *) {
+  border-radius: 0 !important; border-color: var(--nc-line) !important;
+}
+:root[data-nc-on] :is(input, textarea, select):focus-visible { outline: 1px solid var(--nc-cyan) !important; outline-offset: 0; }
+:root[data-nc-on] :is(h1, h2, h3):not([data-nc] *, .sr-only) { font-family: var(--nc-ui) !important; letter-spacing: .04em; }
+
+/* ======================= Chamfered frames =======================
+   The border is a clipped ::before layer and the fill a clipped ::after 1px inside,
+   because clip-path on the element itself would cut its border off. */
+:root[data-nc-on] :is([data-nc~="npc"], [data-nc~="v"], [data-nc~="composer"], [data-nc~="row"], [data-nc~="newchat"], [data-nc~="code"]) {
+  position: relative !important; isolation: isolate;
+  background: transparent !important; border-color: transparent !important;
+  border-radius: 0 !important; box-shadow: none !important;
+}
+:root[data-nc-on] :is([data-nc~="npc"], [data-nc~="v"], [data-nc~="composer"], [data-nc~="row"], [data-nc~="newchat"], [data-nc~="code"])::before,
+:root[data-nc-on] :is([data-nc~="npc"], [data-nc~="v"], [data-nc~="composer"], [data-nc~="row"], [data-nc~="newchat"], [data-nc~="code"])::after {
+  content: ""; position: absolute; z-index: -1; pointer-events: none; --k: var(--nc-cut);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--k)), calc(100% - var(--k)) 100%, 0 100%);
+}
+:root[data-nc-on] :is([data-nc~="npc"], [data-nc~="v"], [data-nc~="composer"], [data-nc~="row"], [data-nc~="newchat"], [data-nc~="code"])::before { inset: 0; background: var(--fb); }
+:root[data-nc-on] :is([data-nc~="npc"], [data-nc~="v"], [data-nc~="composer"], [data-nc~="row"], [data-nc~="newchat"], [data-nc~="code"])::after { inset: 1px; background: var(--ff); --k: calc(var(--nc-cut) - .41px); }
+/* Your messages cut the opposite corner; rows cut two */
+:root[data-nc-on] [data-nc~="v"]::before, :root[data-nc-on] [data-nc~="v"]::after {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, var(--k) 100%, 0 calc(100% - var(--k)));
+}
+:root[data-nc-on] [data-nc~="row"]::before, :root[data-nc-on] [data-nc~="row"]::after {
+  clip-path: polygon(var(--k) 0, 100% 0, 100% calc(100% - var(--k)), calc(100% - var(--k)) 100%, 0 100%, 0 var(--k));
+}
+
+/* ======================= Messages ======================= */
+:root[data-nc-on] [data-nc~="npc"] {
+  --fb: var(--nc-npc-border); --ff: var(--nc-npc-fill);
+  padding: 16px 20px 18px !important;
+  color: var(--nc-npc-text) !important;
+}
+:root[data-nc-on] [data-nc~="npc"] [data-cds="Prose"] :not(pre, pre *, code, svg, svg *, button, button *) { color: inherit; }
+:root[data-nc-on] [data-nc~="npc"] [data-cds="Prose"] { color: var(--nc-npc-text) !important; font-family: var(--nc-body) !important; }
+:root[data-nc-on] [data-nc~="npc"] :is(p, li, td) { font-size: 17px; line-height: 1.5; }
+:root[data-nc-on] [data-nc~="npc"] :is(h1, h2, h3, h4) {
+  font-family: var(--nc-ui) !important; font-weight: 700 !important;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--nc-npc-accent) !important;
+}
+:root[data-nc-on] [data-nc~="npc"] :is(strong, b) { color: var(--nc-npc-accent) !important; font-weight: 600; }
+:root[data-nc-on] [data-nc~="npc"] ul > li::marker { content: "◆  "; color: var(--nc-red); font-size: .7em; }
+:root[data-nc-on] [data-nc~="npc"] ol > li::marker { color: var(--nc-red); font-family: var(--nc-ui); font-weight: 700; }
+:root[data-nc-on] [data-nc~="npc"] :not(pre) > code {
+  font-size: .88em; padding: 1px 5px; border: 1px solid var(--nc-line) !important;
+  border-radius: 0 !important; color: var(--nc-cyan) !important; background: rgba(0,0,0,.35) !important;
+}
+:root[data-nc-on] [data-nc~="npc"] table { border-collapse: collapse; }
+:root[data-nc-on] [data-nc~="npc"] th {
+  font-family: var(--nc-ui) !important; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--nc-label) !important; border-bottom: 1px solid var(--nc-red) !important; text-align: left;
+}
+:root[data-nc-on] [data-nc~="npc"] td { border-color: var(--nc-line) !important; }
+
+:root[data-nc-on] [data-nc~="v"] {
+  --fb: var(--nc-v-border); --ff: var(--nc-v-fill);
+  color: var(--nc-v-text) !important;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--nc-v-border) 14%, transparent));
+}
+:root[data-nc-on] [data-nc~="v"] :not(button, button *, svg, svg *) { font-family: var(--nc-body) !important; color: inherit !important; }
+
+/* Code blocks: frame + the VS Code theme's token colors */
+:root[data-nc-on] [data-nc~="code"] { --fb: var(--nc-line); --ff: #06080c; --nc-cut: 10px; }
+:root[data-nc-on] [data-nc~="code"] :is(pre, code) { color: #ec6458 !important; background: transparent !important; border-radius: 0 !important; }
+:root[data-nc-on] [data-nc~="code"] pre * { background: transparent !important; }
+/* Language caption above the code, like the mockup's header strip */
+:root[data-nc-on] [data-nc~="code"] > [data-find-omitted] {
+  font-family: var(--nc-ui) !important; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--nc-label) !important; padding-bottom: 6px !important; border-bottom: 1px solid var(--nc-line);
+}
+/* Token kinds sorted by content.js (tintCode); !important beats the inline colors */
+:root[data-nc-on] [data-nc~="code"] [data-nc-tok="p"] { color: #ec6458 !important; }
+:root[data-nc-on] [data-nc~="code"] [data-nc-tok="k"] { color: #ff5f56 !important; }
+:root[data-nc-on] [data-nc~="code"] [data-nc-tok="s"] { color: #fcee0a !important; }
+:root[data-nc-on] [data-nc~="code"] [data-nc-tok="f"] { color: #5ef6ff !important; }
+:root[data-nc-on] [data-nc~="code"] [data-nc-tok="n"] { color: #e05aa0 !important; }
+:root[data-nc-on] [data-nc~="code"] [data-nc-tok="c"] { color: #50949d !important; font-style: normal !important; }
+:root[data-nc-on] [data-nc~="code"] [data-nc-tok="t"] { color: #1db866 !important; }
+:root[data-nc-on] [data-nc~="code"] [data-nc-tok="a"] { color: #f78c6c !important; }
+/* Class-based highlighters, in case claude.ai switches */
+:root[data-nc-on] :is(.token.keyword, .token.operator.keyword, .hljs-keyword) { color: #ff5f56 !important; }
+:root[data-nc-on] :is(.token.string, .token.char, .token.attr-value, .hljs-string) { color: #fcee0a !important; }
+:root[data-nc-on] :is(.token.function, .token.method, .hljs-title, .token.attr-name) { color: #5ef6ff !important; }
+:root[data-nc-on] :is(.token.number, .token.boolean, .token.constant, .hljs-number, .hljs-literal) { color: #e05aa0 !important; }
+:root[data-nc-on] :is(.token.comment, .token.prolog, .hljs-comment) { color: #50949d !important; font-style: normal !important; }
+:root[data-nc-on] :is(.token.class-name, .token.builtin, .token.tag, .token.selector, .hljs-built_in, .hljs-type) { color: #1db866 !important; }
+:root[data-nc-on] :is(.token.punctuation, .token.operator) { color: #b83838 !important; }
+
+/* ======================= Composer ======================= */
+:root[data-nc-on] [data-nc~="composer"] {
+  --fb: var(--nc-v-border); --ff: var(--nc-v-fill);
+  color: var(--nc-v-text) !important;
+}
+:root[data-nc-on] [data-nc~="composer"] :is([contenteditable], textarea) {
+  font-family: var(--nc-body) !important; color: var(--nc-v-text) !important;
+}
+:root[data-nc-on] [data-nc~="send"] {
+  border-radius: 0 !important; border: 2px solid var(--nc-cyan) !important; color: var(--nc-cyan) !important;
+  background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--nc-cyan) 18%, transparent) 0 2px, transparent 2px 5px), var(--nc-send-fill) !important;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--nc-cyan) 35%, transparent) !important;
+}
+
+/* ======================= Sidebar ======================= */
+/* Mockup sidebar: page color with a darker left edge, thin rule on the right.
+   claude.ai paints it from its own --df-* sidebar variables, not the gray scale. */
+:root[data-nc-on] :is(.dframe-sidebar, [data-nc~="sidebar"]) {
+  --cds-fizzy-lake-color-sidebar: var(--nc-bg) !important;
+  --df-web-sidebar-bg: var(--nc-bg) !important; --df-sidebar-bg: var(--nc-bg) !important;
+  --df-web-sidebar-bg-image: none !important;
+  --df-hover: color-mix(in srgb, var(--nc-row-fill) 85%, transparent) !important;
+  --df-selected: var(--nc-row-fill) !important; --df-selected-base: var(--nc-row-fill) !important;
+  --df-heading-ink: var(--nc-label) !important; --df-heading-button-ink: var(--nc-label) !important;
+  background: linear-gradient(to right, rgba(0, 0, 0, .35), transparent), var(--nc-bg) !important;
+}
+:root[data-nc-on] [data-nc~="sidebar"] { border-right: 1px solid var(--nc-line) !important; }
+/* Logo micro tag, as in the mockup */
+:root[data-nc-on] [data-app-wordmark] { position: relative; }
+:root[data-nc-on][data-nc-noise="on"] [data-app-wordmark]::after {
+  content: "NEURO NETPROTOCOL 3888_M"; position: absolute; left: calc(100% + 10px); bottom: 3px;
+  font: 9px var(--nc-code); letter-spacing: .04em; white-space: nowrap; color: var(--nc-label); opacity: .55;
+}
+:root[data-nc-on] [data-nc~="sidebar"] :is(h2, h3, [class*="uppercase"]) { color: var(--nc-label) !important; font-weight: 700 !important; letter-spacing: .06em; }
+:root[data-nc-on] [data-nc~="row"] {
+  --fb: var(--nc-row-border); --ff: var(--nc-row-fill); --nc-cut: 8px;
+  margin: 0 0 6px 2px !important;
+  color: var(--nc-row-text) !important;
+}
+:root[data-nc-on] [data-nc~="row"] * { color: inherit !important; background: transparent !important; }
+/* Row text: the site sets weight and case on inner spans, so force them there.
+   Icon glyphs (data-cds="Icon", Anthropicons font) are left alone. */
+:root[data-nc-on] [data-nc~="row"] :not([data-cds="Icon"], [data-cds="Icon"] *, svg, svg *) {
+  font-family: var(--nc-ui) !important; font-weight: 600 !important; font-size: 15px !important;
+  letter-spacing: .05em !important; text-transform: uppercase !important;
+}
+/* Mockup layout: striped marker block, 8px gap, then the framed row. The marker is the
+   row's own background in its left padding and the frame starts 20px in, so it stays
+   inside the row (claude.ai clips anything outside it). */
+:root[data-nc-on] [data-nc~="row"] .df-leading-slot { display: none !important; }
+:root[data-nc-on] [data-nc~="row"] {
+  --nc-marker: color-mix(in srgb, var(--nc-row-border) 100%, var(--nc-row-text) 25%);
+  padding-left: 32px !important;
+  background:
+    repeating-linear-gradient(135deg, var(--nc-marker) 0 2px, transparent 2px 5px) 1px 1px / 10px calc(100% - 2px) no-repeat,
+    linear-gradient(var(--nc-bg), var(--nc-bg)) 1px 1px / 10px calc(100% - 2px) no-repeat,
+    linear-gradient(var(--nc-marker), var(--nc-marker)) 0 0 / 12px 100% no-repeat !important;
+}
+:root[data-nc-on] [data-nc~="row"][data-nc-active] { --nc-marker: var(--nc-red); }
+:root[data-nc-on] [data-nc~="row"]::before { inset: 0 0 0 20px !important; }
+:root[data-nc-on] [data-nc~="row"]::after { inset: 1px 1px 1px 21px !important; }
+/* Top navigation (Search, Projects, ...): small spaced capitals like the mockup */
+:root[data-nc-on] [data-nc~="sidebar"] [data-row-nav]:not([data-nc]) :not([data-cds="Icon"], [data-cds="Icon"] *, svg, svg *) {
+  font-family: var(--nc-ui) !important; font-weight: 600 !important; font-size: 15px !important;
+  letter-spacing: .06em !important; text-transform: uppercase !important; color: inherit !important;
+}
+:root[data-nc-on] [data-nc~="sidebar"] [data-row-nav]:not([data-nc]) {
+  color: var(--nc-row-text) !important; opacity: .8; background: transparent !important;
+}
+/* The mockup's nav has no icons; keep them only when the sidebar is collapsed to icons */
+:root[data-nc-on] .dframe-root:not([data-collapsed]) [data-nc~="sidebar"] [data-row-nav]:not([data-nc]) .df-leading-slot { display: none !important; }
+:root[data-nc-on] [data-nc~="sidebar"] [data-row-nav]:not([data-nc]):hover { opacity: 1; }
+/* Section labels get the mockup's micro tag */
+:root[data-nc-on] [data-nc~="sidebar"] [data-group-name]::after {
+  content: "SEC.LVL 03 // 2077"; margin-left: 10px;
+  font: 9px var(--nc-code); letter-spacing: .04em; opacity: .55; text-transform: uppercase;
+}
+:root[data-nc-on][data-nc-noise="off"] [data-nc~="sidebar"] [data-group-name]::after { content: none; }
+/* Account: square cyan avatar, separated by a rule */
+:root[data-nc-on] [data-testid="user-menu-button"] { border-top: 1px solid var(--nc-line) !important; border-radius: 0 !important; }
+:root[data-nc-on] [data-testid="user-menu-button"] :is(img, [class*="rounded-full"]) {
+  border-radius: 0 !important; box-shadow: 0 0 0 1px var(--nc-cyan) !important;
+}
+:root[data-nc-on] [data-testid="user-menu-button"] :not([data-cds="Icon"], [data-cds="Icon"] *, svg, svg *) {
+  font-family: var(--nc-ui) !important; font-weight: 600 !important; letter-spacing: .05em !important;
+}
+:root[data-nc-on] [data-nc~="row"]:hover { --fb: var(--nc-npc-border); }
+:root[data-nc-on] [data-nc~="row"][data-nc-active] {
+  --fb: var(--nc-row-active-border); --ff: var(--nc-row-active-fill); color: var(--nc-row-active-text) !important;
+}
+:root[data-nc-on] [data-nc~="newchat"] {
+  --fb: var(--nc-v-border); --ff: var(--nc-v-fill); --nc-cut: 9px;
+  font-family: var(--nc-ui) !important; font-weight: 700 !important; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--nc-v-text) !important;
+}
+:root[data-nc-on] [data-nc~="title"],
+:root[data-nc-on] [data-nc~="title"] :is(h2, button) {
+  font-family: var(--nc-ui) !important; font-weight: 600 !important; letter-spacing: .05em !important;
+  text-transform: uppercase !important; color: var(--nc-heading) !important;
+}
+/* Sidebar section labels (Pinned, Recents, Projects) */
+:root[data-nc-on] [data-nc~="sidebar"] [data-group-name] {
+  color: var(--nc-label) !important; font-weight: 700 !important; letter-spacing: .08em; text-transform: uppercase;
+}
+
+/* ======================= Menus & logo =======================
+   Menus and drop-down lists styled like the mockup's panels. */
+:root[data-nc-on] :is([role="menu"], [role="listbox"]) {
+  background: var(--nc-npc-fill) !important; color: var(--nc-row-text) !important;
+  border-radius: 0 !important; border: 1px solid var(--nc-line) !important;
+  border-top: 2px solid var(--nc-red) !important;
+  box-shadow: 0 0 18px color-mix(in srgb, var(--nc-red) 12%, transparent), 0 8px 24px rgba(0, 0, 0, .6) !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+:root[data-nc-on] :is([role="menu"], [role="listbox"]) :is([role^="menuitem"], [role="option"]) {
+  border-radius: 0 !important; background: transparent !important; color: var(--nc-row-text) !important;
+  text-transform: uppercase; letter-spacing: .06em; font-weight: 600;
+}
+:root[data-nc-on] :is([role="menu"], [role="listbox"]) :is([role^="menuitem"], [role="option"]) :not([data-cds="Icon"], [data-cds="Icon"] *, svg, svg *) {
+  font-family: var(--nc-ui) !important; color: inherit !important;
+}
+:root[data-nc-on] :is([role="menu"], [role="listbox"]) :is([role^="menuitem"], [role="option"]):is(:hover, :focus-visible, [data-highlighted], [aria-selected="true"]) {
+  background: var(--nc-row-active-fill) !important; color: var(--nc-row-active-text) !important;
+  box-shadow: inset 2px 0 0 var(--nc-row-active-border) !important;
+}
+:root[data-nc-on] :is([role="menu"], [role="listbox"]) [role="separator"] { background: var(--nc-line) !important; border-color: var(--nc-line) !important; }
+:root[data-nc-on] :is([role="menu"], [role="listbox"]) [data-cds="Shortcut"] {
+  font-family: var(--nc-code) !important; color: var(--nc-cyan) !important; opacity: .7; letter-spacing: 0;
+}
+/* Danger items (Delete, Log out) keep their warning color */
+:root[data-nc-on] [role="menu"] [role^="menuitem"][data-variant="danger"] { color: var(--nc-red) !important; }
+:root[data-nc-on] [data-app-wordmark] span {
+  font-family: var(--nc-ui) !important; font-weight: 700 !important; letter-spacing: .08em !important;
+  text-transform: uppercase !important; color: var(--nc-label) !important;
+  text-shadow: 0 0 12px color-mix(in srgb, var(--nc-label) 45%, transparent);
+}
+
+/* ======================= Johnny extras ======================= */
+:root[data-nc-on][data-nc-preset="johnny"] :is([data-nc~="title"], [data-nc~="npc"] :is(h1, h2, h3)) {
+  text-shadow: -1px 0 rgba(111, 140, 255, .6), 1px 0 rgba(217, 227, 95, .5);
+}
+:root[data-nc-on][data-nc-preset="johnny"][data-nc-noise="on"] [data-nc~="title"] { animation: nc-relic 7s steps(1) infinite; }
+@keyframes nc-relic {
+  0%, 100% { transform: none; clip-path: none; }
+  94% { transform: translateX(-3px); clip-path: inset(0 0 55% 0); }
+  95% { transform: translateX(2px); clip-path: inset(40% 0 0 0); }
+  96% { transform: none; clip-path: none; }
+}
+
+/* ======================= Overlay ======================= */
+#nc-overlay { display: none; }
+:root[data-nc-on] #nc-overlay {
+  /* Above the chat, below claude.ai's dialogs and menus (z-50) */
+  display: block; position: fixed; inset: 0; pointer-events: none; z-index: 30;
+  font: 8px/1.3 var(--nc-code); color: var(--nc-red); letter-spacing: .05em;
+}
+#nc-overlay > * { position: absolute; white-space: pre; }
+#nc-overlay svg { display: block; fill: currentColor; stroke: currentColor; }
+
+/* Glow and dots only brighten (screen blend), so they are safe on top of the page */
+#nc-overlay :is(.nc-glow, .nc-dots) { inset: 0; mix-blend-mode: screen; }
+#nc-overlay .nc-glow { background: radial-gradient(ellipse 70% 40% at 55% -5%, var(--nc-glow), transparent 70%); }
+/* Dot grid stays out of the chat column */
+#nc-overlay .nc-dots {
+  --m: linear-gradient(to right, #000 var(--nc-col-l, 0px), transparent var(--nc-col-l, 0px), transparent calc(100% - var(--nc-col-r, 0px)), #000 calc(100% - var(--nc-col-r, 0px)));
+  background: radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--nc-red) 9%, transparent) 1px, transparent 1.5px) 0 0 / 22px 22px;
+  -webkit-mask: var(--m); mask: var(--m);
+}
+
+#nc-overlay .nc-vtext {
+  left: calc(var(--nc-side-l, -100px) + 3px); top: 34%;
+  writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: .18em; opacity: .26;
+}
+
+#nc-overlay .nc-send-label {
+  /* Bottom edge rests flush on the input box, whatever the strip's height */
+  display: none; top: var(--nc-comp-t); transform: translateY(-100%);
+  left: var(--nc-comp-l); width: var(--nc-comp-w);
+  justify-content: space-between; align-items: baseline;
+  padding: 6px 0 4px; border-top: 1px solid color-mix(in srgb, var(--nc-red) 50%, transparent);
+  /* Solid strip, so the conversation scrolls under the label instead of through it */
+  background: var(--nc-bg);
+}
+:root[data-nc-composer] #nc-overlay .nc-send-label { display: flex; }
+/* claude.ai notices (usage limits, plan offers) sit flush on the input box;
+   lift them clear so the label strip lands between notice and input */
+:root[data-nc-on][data-nc-composer] [data-cds="ChatComposerNotices"] [data-cds-dock-card] { margin-bottom: 40px; }
+#nc-overlay .nc-send-label b { font: 700 16px var(--nc-ui); letter-spacing: .06em; color: var(--nc-label); }
+#nc-overlay .nc-send-label span { opacity: .55; }
+
+#nc-overlay .nc-rail { display: none; top: 84px; bottom: 28px; width: 140px; flex-direction: column; gap: 26px; }
+:root[data-nc-rails] #nc-overlay .nc-rail { display: flex; }
+#nc-overlay .nc-rail.nc-l { left: calc(var(--nc-main-l) + 26px); }
+#nc-overlay .nc-rail.nc-r { right: calc(var(--nc-main-r) + 26px); align-items: flex-end; text-align: right; }
+#nc-overlay .nc-rail::before {
+  content: ""; position: absolute; top: -10px; width: 10px; height: 10px;
+  border-top: 1px solid var(--nc-red); opacity: .35;
+}
+#nc-overlay .nc-l::before { left: -8px; border-left: 1px solid var(--nc-red); }
+#nc-overlay .nc-r::before { right: -8px; border-right: 1px solid var(--nc-red); }
+#nc-overlay .nc-mod { width: 100%; opacity: .26; }
+#nc-overlay .nc-alt { color: var(--nc-cyan); opacity: .16; }
+#nc-overlay .nc-end { margin-top: auto; }
+#nc-overlay .nc-mod-head { display: flex; justify-content: space-between; gap: 8px; padding-bottom: 3px; margin-bottom: 5px; border-bottom: 1px solid currentColor; }
+#nc-overlay .nc-r .nc-mod-head { flex-direction: row-reverse; }
+#nc-overlay .nc-mod-body { display: flex; gap: 10px; }
+#nc-overlay .nc-r .nc-mod-body { justify-content: flex-end; }
+#nc-overlay .nc-tag { border: 1px solid currentColor; padding: 2px 6px; display: flex; gap: 8px; }
+#nc-overlay .nc-tag b { font: 700 10px var(--nc-ui); letter-spacing: .1em; }
+#nc-overlay .nc-flick { animation: nc-flick 9s steps(1) infinite; }
+#nc-overlay .nc-slow { animation-duration: 13s; animation-delay: -4s; }
+@keyframes nc-flick {
+  0%, 100% { opacity: .22; }
+  91% { opacity: .04; } 92% { opacity: .22; }
+  95% { opacity: .5; } 96% { opacity: .22; }
+}
+
+/* Hidden while a dialog (settings, share, ...) is open */
+:root[data-nc-dialog] #nc-overlay :is(.nc-rail, .nc-send-label, .nc-vtext) { display: none !important; }
+
+/* Focus mode: keep colors, glow and scanlines; drop the decoration */
+:root[data-nc-noise="off"] #nc-overlay :is(.nc-rail, .nc-vtext, .nc-send-label span) { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  #nc-overlay .nc-flick, :root[data-nc-on] [data-nc~="title"] { animation: none !important; }
+}

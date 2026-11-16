@@ -1,0 +1,4 @@
+web-ext-artifacts/
+node_modules/
+dev/nc-dump*.json
+Screenshot from *.png

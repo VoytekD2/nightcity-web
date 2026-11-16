@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "Night City for Claude",
+  "version": "0.1.0",
+  "description": "A Night City–inspired skin for claude.ai: holo-phone, journal and Johnny presets. Unofficial fan theme. Changes only how the page looks; collects nothing.",
+  "author": "VoytekD",
+  "homepage_url": "https://github.com/VoytekD2/nightcity-web",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://claude.ai/*"
+      ],
+      "css": [
+        "src/palette.css",
+        "src/theme.css"
+      ],
+      "js": [
+        "src/sites/claude.js",
+        "src/noise.js",
+        "src/content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "fonts/*.woff2"
+      ],
+      "matches": [
+        "https://claude.ai/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Night City",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "nightcity@voytekd",
+      "strict_min_version": "128.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  }
+}

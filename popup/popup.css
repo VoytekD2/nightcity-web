@@ -1,0 +1,50 @@
+body {
+  --red: #ff5f56; --cyan: #5ef6ff; --bg: #07090d; --line: #2a3a3e; --text: #9fc6c6;
+  --on-fill: #12302c; --on-border: #36c98a; --on-text: #7af0b4;
+  width: 300px; margin: 0; padding: 14px 16px 12px;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(150, 36, 36, .35), transparent 70%),
+    radial-gradient(circle at 1px 1px, rgba(255, 95, 86, .08) 1px, transparent 1.5px) 0 0 / 18px 18px,
+    var(--bg);
+  color: var(--text);
+  font: 500 14px 'NC Rajdhani', sans-serif;
+}
+body[data-preset="journal"] { --line: #3a1a1e; --text: #5ef6ff; --on-fill: #7c2626; --on-border: #ff5f56; --on-text: #5ef6ff; }
+body[data-preset="johnny"] {
+  --red: #d9e35f; --cyan: #6f8cff; --bg: #0a0b06; --line: #2e3216; --text: #e2ea6a;
+  --on-fill: #5b7cf0; --on-border: #5b7cf0; --on-text: #0d1028;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(150, 160, 40, .22), transparent 70%),
+    var(--bg);
+}
+
+header { display: flex; align-items: baseline; gap: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--red); margin-bottom: 12px; }
+header b { font-weight: 700; font-size: 20px; letter-spacing: .1em; color: var(--red); text-shadow: 0 0 10px color-mix(in srgb, var(--red) 45%, transparent); }
+.micro { font: 9px/1.35 'NC Share Tech Mono', monospace; letter-spacing: .04em; text-transform: uppercase; color: var(--red); opacity: .6; }
+
+section { margin-bottom: 12px; }
+.label { font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--red); margin-bottom: 5px; }
+
+.tabs { display: flex; gap: 6px; }
+button {
+  flex: 1; padding: 6px 8px; cursor: pointer;
+  font: 600 14px 'NC Rajdhani', sans-serif; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--text); background: rgba(0, 0, 0, .35); border: 1px solid var(--line);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%);
+}
+button:hover { border-color: var(--text); }
+button small { font: 9px 'NC Share Tech Mono', monospace; opacity: .6; letter-spacing: 0; margin-left: 4px; }
+button[aria-pressed="true"] { background: var(--on-fill); border-color: var(--on-border); color: var(--on-text); }
+
+.row { display: flex; gap: 6px; }
+.switch { display: flex; align-items: center; justify-content: center; gap: 7px; }
+.switch .key { border: 1px solid currentColor; padding: 0 4px; font-size: 10px; line-height: 14px; }
+
+.hooks { border-top: 1px solid var(--line); padding-top: 8px; }
+.hooks ul { list-style: none; margin: 4px 0 0; padding: 0; columns: 2; }
+.hooks li { font: 11px 'NC Share Tech Mono', monospace; text-transform: uppercase; }
+.hooks li.ok::before { content: "■ "; color: var(--on-border); }
+.hooks li.miss { color: var(--red); }
+.hooks li.miss::before { content: "□ "; }
+
+footer { border-top: 1px solid var(--line); padding-top: 8px; text-transform: none; }

@@ -1,0 +1,11 @@
+{
+  "name": "nightcity-web",
+  "private": true,
+  "description": "Night City skin for claude.ai (browser extension)",
+  "scripts": {
+    "lint": "npx -y web-ext@8.3.0 lint --ignore-files mockup dev screenshots \"Screenshot*\"",
+    "start": "npx -y web-ext@8.3.0 run --ignore-files mockup dev --start-url https://claude.ai",
+    "build": "npx -y web-ext@8.3.0 build --overwrite-dest --ignore-files mockup dev screenshots \"Screenshot*\" package.json README.md"
+  },
+  "license": "MIT"
+}

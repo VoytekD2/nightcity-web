@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Night City</title>
+<link rel="stylesheet" href="../src/fonts.css">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body data-preset="phone">
+  <header>
+    <b>NIGHT CITY</b>
+    <span class="micro">neuro netprotocol 3888_m</span>
+  </header>
+
+  <section>
+    <div class="label">Theme</div>
+    <div class="tabs">
+      <button data-k="preset" data-v="phone">Phone</button>
+      <button data-k="preset" data-v="journal">Journal</button>
+      <button data-k="preset" data-v="johnny">Johnny</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">Message font</div>
+    <div class="tabs">
+      <button data-k="body" data-v="calm">Calm <small>Barlow</small></button>
+      <button data-k="body" data-v="game">Game <small>Rajdhani</small></button>
+    </div>
+  </section>
+
+  <section class="row">
+    <button class="switch" data-k="noise" data-v="off" data-toggle="on"><span class="key">F</span>Focus mode</button>
+    <button class="switch" data-k="enabled" data-v="false" data-toggle="true"><span class="key">⏻</span>Disable</button>
+  </section>
+
+  <section class="hooks" id="hooks">
+    <div class="label">Link status</div>
+    <div id="hooks-body" class="micro">Open claude.ai to see which parts of the page are linked.</div>
+  </section>
+
+  <footer class="micro">Unofficial fan theme. Not affiliated with CD PROJEKT RED or Anthropic.</footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
