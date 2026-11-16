@@ -14,6 +14,17 @@ npm run build   # zip in web-ext-artifacts/ for upload
 
 Or load it into your own profile: `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on** → pick `manifest.json`. It stays until Firefox restarts.
 
+## Reproduce the build (for reviewers)
+
+All code is hand-written and shipped unminified, except `src/palette.css`, which is generated.
+
+Requirements: Python 3.10+ (standard library only), Node.js 18+ with npm.
+
+```sh
+python3 dev/gen_palette.py   # regenerates src/palette.css (byte-identical to the shipped file)
+npm run build                # packages the extension into web-ext-artifacts/
+```
+
 ## How it works
 
 - `src/sites/claude.js` maps claude.ai elements to roles (`npc`, `v`, `composer`, `row`, ...). When claude.ai changes its markup, this is the file to fix. The popup's **Link status** shows which roles matched.
