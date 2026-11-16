@@ -16,14 +16,24 @@ Or load it into your own profile: `about:debugging#/runtime/this-firefox` → **
 
 ## Reproduce the build (for reviewers)
 
-All code is hand-written and shipped unminified, except `src/palette.css`, which is generated.
+All code is hand-written and shipped unminified, with no bundler, transpiler or minifier. The only generated file is `src/palette.css`: a plain-text color table written by `dev/gen_palette.py` (readable Python, standard library only).
 
-Requirements: Python 3.10+ (standard library only), Node.js 18+ with npm.
+**Environment:** any OS with a POSIX shell (tested on Ubuntu 24.04 Linux; macOS works too).
 
-```sh
-python3 dev/gen_palette.py   # regenerates src/palette.css (byte-identical to the shipped file)
-npm run build                # packages the extension into web-ext-artifacts/
-```
+**Programs:**
+- Python 3.10 or newer (tested with 3.12.3). Ubuntu: `sudo apt install python3`. Others: https://www.python.org/downloads/
+- Node.js 18 or newer with npm (tested with Node 24.18.0, npm 11.16.0). Install from https://nodejs.org/ or with `sudo apt install nodejs npm`.
+- web-ext 8.3.0, fetched automatically by `npx` during the build (needs internet once). Nothing to install by hand.
+
+**Steps:**
+1. Unzip the source and open a terminal in its root folder.
+2. Run `./build.sh` (or `sh build.sh`).
+
+The script:
+1. Runs `python3 dev/gen_palette.py`, which regenerates `src/palette.css` byte-identical to the shipped file.
+2. Runs `npm run build`, which packages the extension with web-ext 8.3.0.
+
+The result is `web-ext-artifacts/night_city_for_claude-<version>.zip`, with the same files as the uploaded package.
 
 ## How it works
 
